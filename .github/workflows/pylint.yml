@@ -18,11 +18,11 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install pylint pylint-django anybadge
+        pip install pylint pylint-django
     - name: Analysing the code with pylint
       run: |
         pylint --exit-zero --load-plugins pylint_django --django-settings-module=onviz_main.settings $(git ls-files '*.py') | tee pylint.log
-        PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint.log)
+        echo "PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint.log)" >> $GITHUB_ENV
     - name: Pylint badge
       uses: RubbaBoy/BYOB@v1.3.0
       with:
