@@ -1,4 +1,4 @@
-![pylint]()
+![pylint](https://byob.yarr.is/seekerk/onviz-server/pylint)
 # onviz-server
 Сервер для сбора данных с камер onviz и рассылки уведомлений в телеграм
 
