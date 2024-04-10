@@ -28,6 +28,6 @@ jobs:
       with:
         NAME: pylint
         LABEL: 'pylint'
-        STATUS: ${{ $PYLINT_SCORE }}
+        STATUS: ${PYLINT_SCORE}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
