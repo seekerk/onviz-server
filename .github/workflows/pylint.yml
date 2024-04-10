@@ -23,5 +23,11 @@ jobs:
       run: |
         pylint --exit-zero --load-plugins pylint_django --django-settings-module=onviz_main.settings $(git ls-files '*.py') | tee pylint.log
         PYLINT_SCORE=$(sed -n 's/^Your code has been rated at \([-0-9.]*\)\/.*/\1/p' ./pylint.log)
-        python3 -m anybadge --label=Pylint --file=pylint.svg --value=$PYLINT_SCORE 2=red 4=orange 8=yellow 10=green
+    - name: Pylint badge
+      uses: RubbaBoy/BYOB@v1.3.0
+      with:
+        NAME: pylint
+        LABEL: 'pulint'
+        STATUS: $PYLINT_SCORE
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
