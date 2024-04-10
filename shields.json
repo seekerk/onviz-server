@@ -1,1 +1,1 @@
-{"pylint":{"label":"pulint","status":"$PYLINT_SCORE","color":""}}
+{"pylint":{"label":"pylint","status":"${PYLINT_SCORE}","color":""}}
