@@ -27,7 +27,7 @@ jobs:
       uses: RubbaBoy/BYOB@v1.3.0
       with:
         NAME: pylint
-        LABEL: 'pulint'
-        STATUS: $PYLINT_SCORE
+        LABEL: 'pylint'
+        STATUS: ${{ $PYLINT_SCORE }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         
