@@ -32,7 +32,9 @@ class FtpServerHandler(FTPHandler):
 
     def on_login(self, username):
         # do something when user login
-        pass
+        coro = send_message(topic="service/ftp_server/login",
+                            message={"username": username})
+        self.loop.run_until_complete(coro)
 
     def on_logout(self, username):
         # do something when user logs out
@@ -44,7 +46,9 @@ class FtpServerHandler(FTPHandler):
 
     def on_file_received(self, file):
         # do something when a file has been received
-        pass
+        coro = send_message(topic="service/ftp_server/upload_file",
+                            message={"file": file, "user": self.username})
+        self.loop.run_until_complete(coro)
 
     def on_incomplete_file_sent(self, file):
         # do something when a file is partially sent
