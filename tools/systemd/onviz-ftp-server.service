@@ -1,0 +1,14 @@
+[Unit]
+Description=Onviz FTP server
+After=network.target remote-fs.target nss-lookup.target
+StartLimitIntervalSec=1d
+StartLimitBurst=5
+
+[Service]
+Type=simple
+ExecStart=/opt/onviz-server/tools/systemd/onviz-ftp-server.sh
+Restart=on-failure
+RestartSec=5s
+
+[Install]
+WantedBy=multi-user.target
