@@ -14,11 +14,11 @@
 
 ## Установка в виде сервиса
 
-Все скрипты запуска серверов в виде сервисов находятся в каталоге [tools/systemd]().
+Все скрипты запуска серверов в виде сервисов находятся в каталоге [tools/systemd](tools/systemd).
 По умолчанию, проект склонирован в /opt/onviz-server и создано окружение в `/opt/onviz-server/.venv`.
 
 1. Установить требуемые библиотеки через `pip install -r requirements.txt`
-2. Скопировать файлы *.service из каталога [tools/systemd]() в `/ets/systemd/system`
+2. Скопировать файлы *.service из каталога [tools/systemd](tools/systemd) в `/ets/systemd/system`
 3. Перезагрузить systemd с помощью команды `systemctl daemon-reload`
 4. Активировать сервисы `systemctl enable onviz-ftp-server.service`
 5. Запустить сервисы `systemctl start onviz-ftp-server.service`
