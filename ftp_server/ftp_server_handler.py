@@ -2,16 +2,29 @@
 Обработчик подключений к FTP серверу
 """
 
+from aiomqtt import Client
 from pyftpdlib.handlers import FTPHandler
+
+
+async def send_message(topic, message):
+    async with Client("localhost", 1883) as client:
+        await client.publish(topic, str(message))
 
 
 class FtpServerHandler(FTPHandler):
     """
     Обработчик подключений к FTP серверу
     """
+    loop: None
 
     def on_connect(self):
+        """
+        Подключение пользователя, уведомляем всех
+        """
         print("%s:%s connected" % (self.remote_ip, self.remote_port))
+        coro = send_message(topic="service/ftp_server/connected",
+                            message={"host": self.remote_ip, "port": self.remote_port})
+        self.loop.run_until_complete(coro)
 
     def on_disconnect(self):
         # do something when client disconnects

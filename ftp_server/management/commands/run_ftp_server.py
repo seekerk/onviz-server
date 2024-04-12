@@ -2,7 +2,7 @@
 Команда запуска FTP сервера.
 Сервер работает отдельным процессом параллельно серверу Django.
 """
-import logging
+import asyncio
 
 from django.core.management import BaseCommand
 from pyftpdlib.authorizers import DummyAuthorizer
@@ -26,6 +26,7 @@ class Command(BaseCommand):
         # authorizer.add_anonymous(homedir='.')
 
         handler = FtpServerHandler
+        handler.loop = asyncio.get_event_loop()
         handler.authorizer = authorizer
         # TODO: брать параметры сервера из настроек
         server = FTPServer(('', 2121), handler)
