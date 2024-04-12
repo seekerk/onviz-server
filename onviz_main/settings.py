@@ -127,3 +127,7 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Настройки FTP сервера
+FTP_SERVER_HOST = os.getenv('FTP_SERVER_HOST', '')
+FTP_SERVER_PORT = os.getenv('FTP_SERVER_PORT', 2121)

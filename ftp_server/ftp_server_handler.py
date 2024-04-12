@@ -2,13 +2,16 @@
 Обработчик подключений к FTP серверу
 """
 
-from aiomqtt import Client
+from aiomqtt import Client, MqttError
 from pyftpdlib.handlers import FTPHandler
 
 
 async def send_message(topic, message):
-    async with Client("localhost", 1883) as client:
-        await client.publish(topic, str(message))
+    try:
+        async with Client("localhost", 1883) as client:
+            await client.publish(topic, str(message))
+    except MqttError as e:
+        print(e, topic, message)
 
 
 class FtpServerHandler(FTPHandler):
