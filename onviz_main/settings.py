@@ -131,3 +131,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Настройки FTP сервера
 FTP_SERVER_HOST = os.getenv('FTP_SERVER_HOST', '')
 FTP_SERVER_PORT = os.getenv('FTP_SERVER_PORT', 2121)
+
+# Настройки бота телеграма
+TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
