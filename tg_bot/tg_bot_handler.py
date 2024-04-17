@@ -32,3 +32,10 @@ class TgBotHandler:
         :return:
         """
         print(context.args)
+
+    def notify_got_new_file(self, param):
+        """
+        Сообщение пользователю бота о появлении нового файла
+        :param param: параметры файла
+        """
+        print(param)

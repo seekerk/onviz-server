@@ -134,3 +134,6 @@ FTP_SERVER_PORT = os.getenv('FTP_SERVER_PORT', 2121)
 
 # Настройки бота телеграма
 TELEGRAM_BOT_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN', '')
+
+BROKER_HOST = os.getenv('BROKER_HOST', 'localhost')
+BROKER_PORT = os.getenv('BROKER_PORT', 1883)

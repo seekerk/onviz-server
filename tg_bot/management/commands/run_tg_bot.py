@@ -36,8 +36,12 @@ async def _stop_tg():
     return None
 
 
+async def _stop_broker(handler):
+    await handler.stop()
+
+
 async def broker_adapter(broker_handler):
-    pass
+    await broker_handler.start_subscription()
 
 
 def _handle_task_result(task: asyncio.Task):
@@ -89,6 +93,8 @@ class Command(BaseCommand):
             loop.run_forever()
         except KeyboardInterrupt:
             task = loop.create_task(_stop_tg())
+            loop.run_until_complete(asyncio.gather(task))
+            task = loop.create_task(_stop_broker(broker_handler))
             loop.run_until_complete(asyncio.gather(task))
             loop.close()
             return

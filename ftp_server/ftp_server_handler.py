@@ -1,15 +1,18 @@
 """
 Обработчик подключений к FTP серверу
 """
+import json
 
 from aiomqtt import Client, MqttError
 from pyftpdlib.handlers import FTPHandler
 
+from onviz_main.settings import BROKER_HOST, BROKER_PORT
+
 
 async def send_message(topic, message):
     try:
-        async with Client("localhost", 1883) as client:
-            await client.publish(topic, str(message))
+        async with Client(BROKER_HOST, BROKER_PORT) as client:
+            await client.publish(topic, json.dumps(message))
     except MqttError as e:
         print(e, topic, message)
 
