@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'tg_bot',
-    'ftp_server'
+    'ftp_server',
+    'web_server'
 ]
 
 MIDDLEWARE = [
